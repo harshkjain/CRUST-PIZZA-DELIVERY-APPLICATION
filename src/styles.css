@@ -1,0 +1,59 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --app-bg: #fff8ef;
+  --surface: #ffffff;
+  --surface-raised: #fffdf8;
+  --surface-glass: rgba(255, 255, 255, 0.86);
+  --border-soft: #f1d9bf;
+  --text-primary: #2f241a;
+  --text-muted: #7d6a58;
+  --accent: #e76f17;
+  --press-scale: 0.97;
+  --motion-fast: 140ms cubic-bezier(0.2, 0.7, 0, 1);
+  --motion-smooth: 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+:root[data-theme='dark'] {
+  --app-bg: #211710;
+  --surface: #2b2119;
+  --surface-raised: #34281f;
+  --surface-glass: rgba(43, 33, 25, 0.9);
+  --border-soft: #4b382b;
+  --text-primary: #fff2e0;
+  --text-muted: #d1b79d;
+  --accent: #fb923c;
+}
+
+body {
+  margin: 0;
+  background: var(--app-bg);
+}
+
+a {
+  color: inherit;
+}
+
+button,
+a,
+[role='button'] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (hover: none) {
+  button:active,
+  a:active,
+  [role='button']:active {
+    transform: scale(var(--press-scale));
+  }
+}

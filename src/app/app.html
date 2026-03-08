@@ -1,0 +1,27 @@
+<div class="app">
+  <header class="nav">
+    <div class="brand" routerLink="/">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="/brand/crust-logo.svg" alt="" />
+      </span>
+      <div>
+        <p>Crust Pizza</p>
+        <small>Premium Delivery Platform</small>
+      </div>
+    </div>
+    <nav>
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a routerLink="/user" routerLinkActive="active" *ngIf="auth.role() === 'user'">Dashboard</a>
+      <a routerLink="/orders" routerLinkActive="active" *ngIf="auth.role() === 'user'">Orders</a>
+      <a routerLink="/admin" routerLinkActive="active" *ngIf="auth.role() === 'admin'">Admin</a>
+      <a routerLink="/login" routerLinkActive="active" *ngIf="!auth.isLoggedIn()">Login</a>
+      <a routerLink="/register" routerLinkActive="active" *ngIf="!auth.isLoggedIn()">Register</a>
+      <button class="mode" (click)="toggleTheme()">{{ theme() === 'light' ? 'Dark' : 'Light' }} mode</button>
+      <button class="mode danger" *ngIf="auth.isLoggedIn()" (click)="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <main class="page">
+    <router-outlet></router-outlet>
+  </main>
+</div>
